@@ -15,7 +15,7 @@
             where id = #{id}
         </select>
         <select id="selectByName" resultType="com.wtz.community.entity.User">
-            select i<include refid="selectFields"></include>
+            select <include refid="selectFields"></include>
             from user
             where username = #{username}
         </select>
@@ -25,7 +25,7 @@
             where email = #{email}
         </select>
 
-        <insert id="insertUser" parameterType="User" keyProperty="id">    <!--keyProperty表示主键(自增)对应哪个属性，sql执行后产生id后回填到对象中国-->
+        <insert id="insertUser" parameterType="User" keyProperty="id">    <!--keyProperty表示主键(自增)对应哪个属性，sql执行后产生id后回填到对象中-->
             insert into user (<include refid="insertFields"></include>)
             values(#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activationCode}, #{headerUrl}, #{createTime})
         </insert>
